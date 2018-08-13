@@ -1,0 +1,27 @@
+<a [routerLink]="['/pets']">Home</a>
+
+<h4>Details about: {{pet.name}}</h4>
+<table>
+  <tr>
+    <td><h4>Pet Type: </h4></td> 
+    <td><h4>{{pet.type}}</h4></td> 
+  </tr>
+    <tr>
+      <td><h4>Description: </h4></td>
+      <td><h4>{{pet.description}}</h4><br></td>
+  </tr>
+  <tr>
+    <td><h4 class="inline">Skills: </h4></td>
+    <td>
+      <h4 *ngIf="pet.skills.skill1.length > 0">{{pet.skills.skill1}}</h4>
+      <h4 *ngIf="pet.skills.skill2.length > 0">{{pet.skills.skill2}}</h4>
+      <h4 *ngIf="pet.skills.skill3.length > 0">{{pet.skills.skill3}}</h4>
+    </td>
+  </tr>
+  <tr>
+      <td><h4>Likes: </h4></td>
+      <td><h4>{{pet.likes}}</h4></td>
+  </tr>
+</table>
+<button class="btn btn-primary" [disabled]="liked" (click)="likePet()">do you like?</button>
+<button class="btn btn-info" (click)="deletePet()">Adopt this Pet</button>

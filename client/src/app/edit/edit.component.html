@@ -1,0 +1,33 @@
+<h4>Edit this pet</h4>
+<span *ngIf="errors">{{ errors }} </span>
+<div>
+  <form (submit)="editPet()" #myForm="ngForm">
+    <label for="pet.name">Pet name:</label><br>
+    <input type="text" name="pet.name" required minlength="3" [(ngModel)]="pet.name" #name="ngModel" class="form-control"><br>
+    <div *ngIf="(name.invalid && (name.touched || name.dirty))">
+      <p *ngIf="name.errors.required" class="text text-danger error" >Pet name is required</p>
+      <p *ngIf="name.errors.minlength" class="text text-danger error" >Pet name must be longer than 3 characters.</p>
+    </div>
+    <label for="pet.type">Pet type:</label><br>
+    <input type="text" name="pet.type" required minlength="3" [(ngModel)]="pet.type" #type="ngModel" class="form-control"><br>
+    <div *ngIf="(type.invalid && (type.touched || type.dirty))">
+      <p *ngIf="type.errors.required" class="text text-danger error" >Pet type is required</p>
+      <p *ngIf="type.errors.minlength" class="text text-danger error" >Pet type must be longer than 3 characters.</p>
+    </div>
+    <label for="pet.name">Description:</label><br>
+    <input type="text" name="pet.description" required minlength="3" [(ngModel)]="pet.description" #description="ngModel" class="form-control"><br>
+    <div *ngIf="(description.invalid && (description.touched || description.dirty))">
+      <p *ngIf="description.errors.required" class="text text-danger error" >Pet description is required</p>
+      <p *ngIf="description.errors.minlength" class="text text-danger error" >Pet description must be longer than 3 characters.</p>
+    </div>
+    <label for="pet.skills">Skills:</label><br>
+    <label for="pet.skills1" class="tab">Skills1:</label>
+    <input type="text" name="pet.skills.skill1" [(ngModel)]="pet.skills.skill1" class="form-control inline"><br>
+    <label for="pet.skills1" class="tab">Skills2:</label>
+    <input type="text" name="pet.skills.skill2" [(ngModel)]="pet.skills.skill2" class="form-control inline"><br>
+    <label for="pet.skills1" class="tab">Skills3:</label>
+    <input type="text" name="pet.skills.skill3" [(ngModel)]="pet.skills.skill3" class="form-control inline"><br>
+    <input type="submit" [disabled]="myForm.invalid" value="Edit Pet">
+  </form>
+    <button class="btn btn-warning" [routerLink]="['/pets',pet._id]">Cancel</button>
+</div>
